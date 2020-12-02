@@ -1,0 +1,29 @@
+{
+  "name": "readiness-manager",
+  "version": "0.0.1",
+  "description": "👨‍💼 Define when your app is ready",
+  "keywords": [
+    "ready",
+    "listeners",
+    "handlers",
+    "process"
+  ],
+  "author": "Fiverr Ants",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fiverr/readiness-manager.git"
+  },
+  "homepage": "https://github.com/fiverr/readiness-manager#readme",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint . --ext .js"
+  },
+  "devDependencies": {
+    "@fiverr/eslint-config-fiverr": "^3.2.1",
+    "eslint": "^7.10.0",
+    "eslint-plugin-log": "^1.2.6",
+    "jest": "^26.4.2"
+  }
+}
