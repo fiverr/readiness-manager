@@ -256,13 +256,16 @@ describe('lib/readinessManager', () => {
     describe('Chainable', () => {
         it('Expose public chainable api', () => {
             const ready = jest.fn();
+            const error = jest.fn();
 
             readyManager.register('action', () => true);
 
             readyManager.run()
-                .onReady(ready);
+                .onReady(ready)
+                .onError(error);
 
             expect(ready).toHaveBeenCalledTimes(1);
+            expect(error).toHaveBeenCalledTimes(0);
         });
     });
 });
