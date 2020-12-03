@@ -260,9 +260,9 @@ describe('lib/readinessManager', () => {
 
             readyManager.register('action', () => true);
 
-            readyManager.run()
+            const x = readyManager.run()
                 .onReady(ready)
-                .onError(error);
+                .onError(error)
 
             expect(ready).toHaveBeenCalledTimes(1);
             expect(error).toHaveBeenCalledTimes(0);

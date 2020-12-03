@@ -97,11 +97,11 @@ class ReadinessManager {
     onReady(callback) {
         if (readyState) {
             // Invokes immediately given callback if process is already ready.
-            return callback();
+            callback();
+            return this;
         }
 
         this[Symbols.callbacks].push(callback);
-
         return this;
     }
 
@@ -121,7 +121,6 @@ class ReadinessManager {
         }
 
         this[Symbols.beacons][name].callbacks.push(callback);
-
         return this;
     }
 
