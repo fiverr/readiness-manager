@@ -25,7 +25,7 @@ const Symbols = [
 let readyState = false;
 
 /**
- * @type ReadinessManager
+ * @type {ReadinessManager}
  */
 class ReadinessManager {
     constructor() {
@@ -78,17 +78,21 @@ class ReadinessManager {
 
     /**
      * Runs current registered beacons execution to determine process "ready" state.
+     * @return {ReadinessManager}
      */
     run() {
         readyState = false;
 
         Object.values(this[Symbols.beacons])
             .map(this[Symbols.execute]);
+
+        return this;
     }
 
     /**
      * Registers a given callback to be triggered once process is marked as "ready".
      * @param {ReadyCallback} callback
+     * @return {ReadinessManager}
      */
     onReady(callback) {
         if (readyState) {
@@ -97,12 +101,15 @@ class ReadinessManager {
         }
 
         this[Symbols.callbacks].push(callback);
+
+        return this;
     }
 
     /**
      * Registers a given callback on a specific action resolved..
      * @param {string} name - The name of the action the callback should be attached to.
      * @param {ReadyCallback} callback - The callback to run upon beacon resolved.
+     * @return {ReadinessManager}
      */
     onActionReady(name, callback) {
         const beacon = this[Symbols.beacons][name];
@@ -114,14 +121,18 @@ class ReadinessManager {
         }
 
         this[Symbols.beacons][name].callbacks.push(callback);
+
+        return this;
     }
 
     /**
      * Registers a given error handler under manager errors.
      * @param {ActionErrorHandler} errorHandler - The handler to trigger upon action errors.
+     * @return {ReadinessManager}
      */
     onError(errorHandler) {
         Object.assign(this, { [Symbols.errorHandler]: errorHandler });
+        return this;
     }
 
     /**

@@ -252,4 +252,17 @@ describe('lib/readinessManager', () => {
             });
         });
     });
+
+    describe('Chainable', () => {
+        it('Expose public chainable api', () => {
+            const ready = jest.fn();
+
+            readyManager.register('action', () => true);
+
+            readyManager.run()
+                .onReady(ready);
+
+            expect(ready).toHaveBeenCalledTimes(1);
+        });
+    });
 });
